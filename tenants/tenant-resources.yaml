@@ -1,0 +1,24 @@
+namespace:
+  namespace_name: "my-namespace"
+  labels:
+    environment: "dev"
+    team: "platform"
+
+appproject:
+  project_name: "my-project"
+  description: "Project for managing applications"
+  source_repos:
+    - "https://github.com/my-org/my-repo.git"
+  destinations:
+    - namespace: "*"
+      server: "https://kubernetes.default.svc"
+
+applicationset:
+  applicationset_name: "my-applicationset"
+  project_name: "my-project"
+  repo_url: "https://github.com/my-org/my-repo.git"
+  revision: "main"
+  paths:
+    - "environments/dev"
+    - "environments/prod"
+  app_name_prefix: "my-app"

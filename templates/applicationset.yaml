@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/my-org/my-repo.git
+        revision: main
+        directories:
+          - path: environments/dev
+          - path: environments/prod
+  template:
+    metadata:
+      name: 'my-app-{{path.basename}}'
+    spec:
+      project: my-project
+      source:
+        repoURL: https://github.com/my-org/my-repo.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: '{{destination.server}}'
+        namespace: '{{destination.namespace}}'
