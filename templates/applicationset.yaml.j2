@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ applicationset_name }}
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: {{ repo_url }}
+        revision: {{ revision }}
+        directories:
+          {% for path in paths %}
+          - path: {{ path }}
+          {% endfor %}
+  template:
+    metadata:
+      name: '{{ app_name_prefix }}-{{ "{{path.basename}}" }}'
+    spec:
+      project: {{ project_name }}
+      source:
+        repoURL: {{ repo_url }}
+        targetRevision: {{ revision }}
+        path: '{{ "{{path}}" }}'
+      destination:
+        server: '{{ "{{destination.server}}" }}'
+        namespace: '{{ "{{destination.namespace}}" }}'

@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+.venv/
+venv/
+ENV/
+env/
+.build/
+.egg/
+.eggs/
+*.egg-info/
+
+# Installers
+*.whl
+
+# Distribution / packaging
+dist/
+build/
+develop-eggs/
+.eggs/
+*.egg
+MANIFEST
+*.manifest
+*.spec
+
+# PyInstaller
+*.spec
+
+# Logs and debugging
+*.log
+*.out
+*.err
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.tox/
+.pytest_cache/
+.jupyter_cache/
+.ipynb_checkpoints/
+
+# pip environment
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pytest reports
+*.pytest_cache
+.pytest_cache/
+
+# Sphinx documentation
+docs/_build/
+docs/_static/
+docs/_autodoc/
+
+# IDE

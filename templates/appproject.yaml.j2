@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ project_name }}
+  namespace: argocd
+spec:
+  description: "{{ description }}"
+  sourceRepos:
+    {% for repo in source_repos %}
+    - {{ repo }}
+    {% endfor %}
+  destinations:
+    {% for destination in destinations %}
+    - namespace: {{ destination.namespace }}
+      server: {{ destination.server }}
+    {% endfor %}
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
